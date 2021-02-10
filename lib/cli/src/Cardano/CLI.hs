@@ -1389,7 +1389,7 @@ poolMetadataSourceOption = option (eitherReader reader) $ mempty
     reader :: String -> Either String PoolMetadataSource
     reader = fromTextS @PoolMetadataSource
 
--- | [--token-metadata-serve=URL]
+-- | [--token-metadata-server=URL]
 tokenMetadataSourceOption
     :: Parser TokenMetadataServer
 tokenMetadataSourceOption = optionT $ mempty
