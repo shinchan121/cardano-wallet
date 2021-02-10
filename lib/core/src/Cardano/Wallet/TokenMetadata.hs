@@ -360,7 +360,7 @@ instance ToText TokenMetadataLog where
                 , toText (length $ subjects req)
                 , " assets, and received "
                 , toText (length batch)
-                , "."
+                , " in response."
                 ]
             Left e -> mconcat
                 [ "An error occurred while fetching metadata: "
