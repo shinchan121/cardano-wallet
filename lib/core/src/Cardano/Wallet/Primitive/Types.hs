@@ -1360,10 +1360,6 @@ distance a b =
                                Metadata services
 -------------------------------------------------------------------------------}
 
-newtype TokenMetadataServer = TokenMetadataServer
-    { unTokenMetadataServer :: URI }
-    deriving (Show, Generic, Eq)
-
 uriToText :: URI -> Text
 uriToText uri = T.pack $ uriToString id uri ""
 
@@ -1382,6 +1378,10 @@ parseURI (T.unpack -> uri) = runIdentity $ runExceptT $ do
                     Left "URI must not contain a path/query/fragment."
             _ -> Right uri'
     either (throwE . TextDecodingError) pure res
+
+newtype TokenMetadataServer = TokenMetadataServer
+    { unTokenMetadataServer :: URI }
+    deriving (Show, Generic, Eq)
 
 instance ToText TokenMetadataServer where
     toText = uriToText . unTokenMetadataServer
